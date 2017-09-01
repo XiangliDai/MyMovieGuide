@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00aa8d</color>
+    <color name="colorPrimaryDark">#008975</color>
+    <color name="colorAccent">#00bf9a</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <!-- update screen colors -->
+
+
+    <!-- extra info screen colors -->
+    <color name="extra_info_header_color">#F9FAF6</color>
+    <color name="extra_info_complete_not_done">#D7D8D6</color>
+    <color name="loading_avatar_color">#FFb8b8b8</color>
+    <color name="label_hint_text_color">#aeaeac</color>
+    <color name="update_time_label_color">#b1b1b1</color>
+    <color name="card_header_text_color">#adadad</color>
+
+    <color name="header">#767973</color>
+    <color name="activity_background">#7F7F7F</color>
+    <color name="scrim">#99323232</color>
+    <color name="subtitle_grey">#767676</color>
+    <color name="half_black">#808080</color>
+    <color name="image_foreground">#7f000000</color>
+
+    <color name="fb_messenger_blue">#4280f2</color>
+    <color name="whats_app_green">#25D366</color>
+    <color name="thank_you_flow_comments_background">#F9FAF6</color>
+
+    <color name="contact_header_color">#f8f8f8</color>
+    <color name="background_light">#fafafa</color>
+    <color name="co_coaching_background">#f4f4f4</color>
+    <color name="facebook_blue">#3b5998</color>
+    <color name="facebook_pressed_blue">#4e69a2</color>
+    <color name="gfm_pressed_green">#518c26</color>
+    <color name="toolbar_subtitle_color">#b2ffffff</color>
+    <color name="edit_campaign_content">#dd000000</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="new_gfm_green">#5d8000</color>
+    <color name="goal_progress_bar_color">#4cffffff</color>
+</resources>

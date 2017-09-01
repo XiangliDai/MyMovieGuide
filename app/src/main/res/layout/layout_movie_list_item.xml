@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/card_background"
+    android:elevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="133dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/sample" />
+
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_toLeftOf="@+id/movie_rate"
+            android:layout_marginRight="6dp"
+            tools:text="movie title" />
+
+        <TextView
+            android:id="@+id/movie_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/ic_star_rate_white_18dp"
+            android:drawableTint="@color/colorPrimary"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="7.5" />
+
+        <TextView
+            android:id="@+id/movie_release"
+            android:layout_below="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image"
+            android:textColor="@color/subtitle_grey"
+            android:textSize="14sp"
+            android:drawableLeft="@mipmap/ic_date_range_white_18dp"
+            android:drawableTint="@color/subtitle_grey"
+            tools:text="2016" />
+        <TextView
+            android:id="@+id/movie_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_release"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/image"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:lineSpacingExtra="2sp"
+            android:textColor="@color/subtitle_grey"
+            android:textSize="14sp"
+            tools:text="movie description" />
+        <TextView
+            android:id="@+id/more_info"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image"
+            android:textColor="@color/colorPrimary"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:textSize="14sp"
+            android:text="@string/more_info" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/person_profile"
+        android:scaleType="centerCrop"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="8dp"/>
+
+    <TextView
+        android:id="@+id/person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_toLeftOf="@+id/movie_rate"
+        android:layout_toRightOf="@+id/person_profile"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        tools:text="Sandra Bullock" />
+
+    <TextView
+        android:id="@+id/person_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/person_name"
+
+        android:layout_toRightOf="@+id/person_profile"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        tools:text="Scarlet Overkill (voice)" />
+</RelativeLayout>
