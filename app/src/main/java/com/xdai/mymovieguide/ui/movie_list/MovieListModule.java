@@ -1,7 +1,6 @@
-package com.xdai.mymovieguide.ui.main;
+package com.xdai.mymovieguide.ui.movie_list;
 
 import android.app.Activity;
-
 
 import com.mymovieguide.xdai.network.config.ApiRetrofitProvider;
 import com.mymovieguide.xdai.network.config.IApiRetrofitProvider;
@@ -14,10 +13,10 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class MainActivityModule {
+public class MovieListModule {
     private final Activity activity;
 
-    public MainActivityModule(Activity activity) {
+    public MovieListModule(Activity activity) {
         this.activity = activity;
     }
 
@@ -46,7 +45,7 @@ public class MainActivityModule {
     }
 
     @Provides
-    IMainPresenter providesMainPresenter(IMovieRepository movieRepository) {
-        return new MainPresenter(movieRepository);
+    IMovieListPresenter providesMovieListPresenter(IMovieRepository movieRepository) {
+        return new MovieListPresenter(movieRepository);
     }
 }

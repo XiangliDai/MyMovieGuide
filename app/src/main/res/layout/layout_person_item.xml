@@ -6,12 +6,16 @@
     android:paddingTop="8dp"
     android:orientation="vertical">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/person_profile"
-        android:scaleType="centerCrop"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginRight="8dp"/>
+        android:src="@mipmap/blankprofile"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/loading_avatar_color"
+        android:layout_marginRight="8dp"
+        />
 
     <TextView
         android:id="@+id/person_name"
@@ -21,7 +25,7 @@
         android:layout_toLeftOf="@+id/movie_rate"
         android:layout_toRightOf="@+id/person_profile"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="16sp"
         tools:text="Sandra Bullock" />
 
     <TextView
@@ -29,9 +33,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/person_name"
-
         android:layout_toRightOf="@+id/person_profile"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        tools:text="Scarlet Overkill (voice)" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/person_title"
+        android:layout_toRightOf="@+id/person_profile"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:visibility="gone"
         tools:text="Scarlet Overkill (voice)" />
 </RelativeLayout>

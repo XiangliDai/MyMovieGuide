@@ -89,4 +89,8 @@ public class MovieRepository implements IMovieRepository{
         return apiRestClient.getMovieSimilarsById(movie_id, page, language, apiKey);
     }
 
+    @Override
+    public Observable<Movies> getMoviesByGenre(int genre){
+        return apiRestClient.getMoviesByGenre(genre, true, language, apiKey);
+    }
 }

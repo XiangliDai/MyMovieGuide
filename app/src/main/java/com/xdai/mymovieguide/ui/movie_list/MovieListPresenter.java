@@ -1,4 +1,4 @@
-package com.xdai.mymovieguide.ui.main;
+package com.xdai.mymovieguide.ui.movie_list;
 
 import android.util.Log;
 
@@ -15,59 +15,69 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiangli on 7/12/17.
  */
 
-public class MainPresenter extends BasePresenter<IMainView> implements IMainPresenter {
-    private static String TAG = MainPresenter.class.getCanonicalName();
+public class MovieListPresenter extends BasePresenter<IMovieListView> implements IMovieListPresenter {
+    private static String TAG = MovieListPresenter.class.getCanonicalName();
     private IMovieRepository movieRepository;
     private int page = 1;
     private int currentType;
-    public MainPresenter(IMovieRepository movieRepository) {
+    public MovieListPresenter(IMovieRepository movieRepository) {
         super();
         this.movieRepository = movieRepository;
     }
 
-    @Override
-    public void loadTopRatedMovies() {
+    private void loadTopRatedMovies() {
         movieRepository.getTopRatedMovies(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
     }
 
-    @Override
-    public void loadNowPlayingMovies() {
+    private void loadNowPlayingMovies() {
         movieRepository.getNowPlayingMovies(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
     }
 
-    @Override
-    public void loadUpcomingMovies() {
+    private void loadUpcomingMovies() {
         movieRepository.getUpcomingMovies(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
     }
 
     @Override
-    public void refresh(int currentType) {
-        this.currentType = currentType;
-        switch (currentType){
-            case 0:
+    public void loadMovieList(MovieListBaseActivity.Type type, int id) {
+        switch (type){
+            case POPULAR:
                 loadPopularMovies();
                 break;
-            case 1:
+            case TOPRATED:
                 loadTopRatedMovies();
                 break;
-            case 2:
+            case NOWPLAYING:
                 loadNowPlayingMovies();
                 break;
-            case 3:
+            case UPCOMING:
                 loadUpcomingMovies();
+                break;
+            case GENRE:
+                loadGenreMovies(id);
                 break;
         }
     }
 
     @Override
-    public void loadPopularMovies() {
-        if (movieRepository != null && getView() != null)
-            movieRepository.getMostPopularMovies(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
+    public void loadMovieList(MovieListBaseActivity.Type type) {
+        loadMovieList(type, 0);
     }
 
+
     @Override
-    public void setView(IMainView mainView) {
-        super.setView(mainView);
+    public void setView(IMovieListView movieListView) {
+        super.setView(movieListView);
+    }
+
+
+    private void loadGenreMovies(int genre_id) {
+        if (movieRepository != null && getView() != null)
+            movieRepository.getMoviesByGenre(genre_id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
+    }
+
+    private void loadPopularMovies() {
+        if (movieRepository != null && getView() != null)
+            movieRepository.getMostPopularMovies(page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(onReceiveData, throwableConsumer);
     }
 
     private Consumer<Movies> onReceiveData = movieListResult -> {

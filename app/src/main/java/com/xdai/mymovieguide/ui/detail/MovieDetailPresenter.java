@@ -3,8 +3,6 @@ package com.xdai.mymovieguide.ui.detail;
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.xdai.mymovieguide.mvp.BasePresenter;
 import com.xdai.mymovieguide.repository.IMovieDetailRepository;
-import com.xdai.mymovieguide.repository.IMovieRepository;
-import com.xdai.mymovieguide.ui.main.IMainView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;

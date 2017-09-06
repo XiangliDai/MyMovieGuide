@@ -3,6 +3,7 @@ package com.xdai.mymovieguide.repository;
 import com.mymovieguide.xdai.network.response.Credits;
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.mymovieguide.xdai.network.response.Movies;
+import com.mymovieguide.xdai.network.response.Reviews;
 import com.mymovieguide.xdai.network.response.Videos;
 
 import io.reactivex.Observable;
@@ -23,4 +24,7 @@ public interface IMovieDetailRepository {
     Observable<Movies> getMovieRecommendationsById(int movie_id, int page);
 
     Observable<Movies> getMovieSimilarsById(int movie_id, int page);
+
+    Observable<Reviews> getMovieReviewsById(int movie_id, int page);
+
 }

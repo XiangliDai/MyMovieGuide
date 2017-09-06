@@ -2,21 +2,11 @@ package com.xdai.mymovieguide.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
-import com.xdai.mymovieguide.R;
 import com.xdai.mymovieguide.Utils.StateMaintainer;
 import com.xdai.mymovieguide.mvp.IPresenter;
 import com.xdai.mymovieguide.mvp.IView;
-import com.xdai.mymovieguide.ui.main.IMainPresenter;
-import com.xdai.mymovieguide.ui.main.MovieListAdapter;
-
-import java.util.ArrayList;
-
-import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by xiangli on 7/12/17.

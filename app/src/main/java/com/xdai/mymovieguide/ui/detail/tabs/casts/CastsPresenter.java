@@ -21,12 +21,7 @@ public class CastsPresenter extends BasePresenter<ICreditView> implements ICasts
     @Override
     public void getCredit(int movie_id) {
         if(movieDetailRepository != null && creditView != null)
-            movieDetailRepository.getMovieCreditsById(movie_id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Credits>() {
-                @Override
-                public void accept(Credits credits) throws Exception {
-                    creditView.bindCredit(credits);
-                }
-            },  throwable -> {
+            movieDetailRepository.getMovieCreditsById(movie_id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(credits -> creditView.bindCredit(credits), throwable -> {
                 if(creditView != null) {
                     creditView.hideProgress();
                     creditView.showToast(throwable.getMessage());

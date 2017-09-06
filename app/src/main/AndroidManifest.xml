@@ -20,6 +20,15 @@
             android:parentActivityName=".ui.main.MainActivity">
 
         </activity>
+        <activity android:name=".ui.movie_list.MovieListActivity">
+
+        </activity>
+        <activity android:name=".ui.movie_trailers.MovieTrailersActivity">
+
+        </activity>
+        <activity android:name=".ui.movie_trailers.MoviePlayerActivity">
+
+        </activity>
     </application>
 
 </manifest>

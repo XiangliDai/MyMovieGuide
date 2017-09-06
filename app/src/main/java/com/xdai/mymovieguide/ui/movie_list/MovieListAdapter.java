@@ -1,4 +1,4 @@
-package com.xdai.mymovieguide.ui.main;
+package com.xdai.mymovieguide.ui.movie_list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -64,6 +64,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         movieListMovieResults.clear();
         notifyDataSetChanged();
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.image)

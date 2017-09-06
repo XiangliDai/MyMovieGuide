@@ -24,6 +24,11 @@ public class InfoAdapter<T extends BaseInterface>  extends  RecyclerView.Adapter
     private List<T> list;
     private Context context;
 
+    public void setItemAction(ItemAction itemAction) {
+        this.itemAction = itemAction;
+    }
+
+    private ItemAction itemAction;
     public InfoAdapter(Context context, ArrayList<T> data) {
         this.context = context;
         this.list = data;
@@ -33,7 +38,7 @@ public class InfoAdapter<T extends BaseInterface>  extends  RecyclerView.Adapter
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
                 from(parent.getContext()).
-                inflate(R.layout.ia_layout_name_item, parent, false);
+                inflate(R.layout.layout_name_item, parent, false);
         return new InfoAdapter.ViewHolder(itemView);
     }
 
@@ -41,6 +46,14 @@ public class InfoAdapter<T extends BaseInterface>  extends  RecyclerView.Adapter
     public void onBindViewHolder(InfoAdapter.ViewHolder holder, int position) {
         T t = list.get(position);
         holder.text_name.setText(t.getName());
+        if(this.itemAction != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    itemAction.onItemClicked(position);
+                }
+            });
+        }
     }
 
     public void add(List<T> data){
@@ -64,5 +77,9 @@ public class InfoAdapter<T extends BaseInterface>  extends  RecyclerView.Adapter
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface ItemAction{
+        void onItemClicked(int position);
     }
 }

@@ -3,20 +3,17 @@ package com.xdai.mymovieguide.ui.detail;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.xdai.mymovieguide.R;
 import com.xdai.mymovieguide.Utils.IImageLoader;
-import com.xdai.mymovieguide.Utils.StateMaintainer;
+import com.xdai.mymovieguide.Utils.NavigateService;
 import com.xdai.mymovieguide.ui.BaseActivity;
 import com.xdai.mymovieguide.ui.detail.tabs.DetailPagerAdapter;
 
@@ -47,7 +44,7 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     }
 
     private int movie_id;
-
+    private String movie_name;
     public MovieDetailActivityComponent getComponent() {
         return component;
     }
@@ -69,18 +66,17 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
 
         ButterKnife.bind(this, this.findViewById(android.R.id.content));
         movie_id = getIntent().getIntExtra("movie_id", 0);
-
+        movie_name = getIntent().getStringExtra("movie_name");
         initStateManager();
 
         toolbar.setVisibility(View.VISIBLE);
 
-        setTitle(getIntent().getStringExtra("movie_name"));
+        setTitle(movie_name);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         detail_tabs.addTab(detail_tabs.newTab().setText("Overview"));
         detail_tabs.addTab(detail_tabs.newTab().setText("Casts"));
         detail_tabs.addTab(detail_tabs.newTab().setText("Reviews"));
-        detail_tabs.addTab(detail_tabs.newTab().setText("Videos"));
 
         viewpager.setAdapter(new DetailPagerAdapter(getSupportFragmentManager()));
         viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(detail_tabs));
@@ -129,7 +125,7 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     }
 
     @Override
-    protected  void reinitializeStore() {
+    protected void reinitializeStore() {
         movieDetailPresenter = getStateMaintainer().get(movieDetailPresenter.getClass().getCanonicalName());
         if (movieDetailPresenter != null) {
             movieDetailPresenter.setView(this);
@@ -137,8 +133,20 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.movie_detail_menu, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                break;
+            case R.id.action_trailer:
+                NavigateService.launchMovieTrailer(this, movie_id, movie_name);
             case android.R.id.home:
                 onBackPressed();
                 return true;

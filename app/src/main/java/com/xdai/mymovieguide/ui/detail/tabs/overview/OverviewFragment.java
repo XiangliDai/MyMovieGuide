@@ -14,17 +14,18 @@ import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.mymovieguide.xdai.network.response.ProductionCompany;
 import com.mymovieguide.xdai.network.response.ProductionCountry;
 import com.xdai.mymovieguide.R;
-import com.xdai.mymovieguide.mvp.IView;
+import com.xdai.mymovieguide.Utils.NavigateService;
 import com.xdai.mymovieguide.ui.detail.MovieDetailActivity;
-import com.xdai.mymovieguide.ui.detail.tabs.casts.ICastsPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static com.xdai.mymovieguide.ui.movie_list.MovieListBaseActivity.Type.GENRE;
+
 
 /**
  * Created by xiangli on 8/31/17.
@@ -75,6 +76,15 @@ public class OverviewFragment extends Fragment implements IOverviewView{
 
         genres_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         genreInfoAdapter = new InfoAdapter<Genre>(getContext(), genreList);
+        genreInfoAdapter.setItemAction(new InfoAdapter.ItemAction() {
+            @Override
+            public void onItemClicked(int position) {
+                if(genreList != null){
+                    Genre genre = genreList.get(position);
+                    NavigateService.launchMovieList(getContext(), genre, GENRE);
+                }
+            }
+        });
         genres_list.setAdapter(genreInfoAdapter);
 
         production_countries_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

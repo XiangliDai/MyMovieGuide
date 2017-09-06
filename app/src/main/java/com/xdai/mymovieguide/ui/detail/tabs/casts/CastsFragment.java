@@ -2,26 +2,18 @@ package com.xdai.mymovieguide.ui.detail.tabs.casts;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.LayoutInflaterCompat;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.mymovieguide.xdai.network.response.Cast;
 import com.mymovieguide.xdai.network.response.Credits;
 import com.mymovieguide.xdai.network.response.Crew;
-import com.mymovieguide.xdai.network.response.Genre;
-import com.mymovieguide.xdai.network.response.MovieDetail;
-import com.mymovieguide.xdai.network.response.ProductionCompany;
-import com.mymovieguide.xdai.network.response.ProductionCountry;
 import com.xdai.mymovieguide.R;
 import com.xdai.mymovieguide.Utils.IImageLoader;
 import com.xdai.mymovieguide.ui.detail.MovieDetailActivity;
-import com.xdai.mymovieguide.ui.detail.tabs.overview.InfoAdapter;
 
 import java.util.ArrayList;
 
@@ -58,14 +50,11 @@ public class CastsFragment extends Fragment implements ICreditView{
         ButterKnife.bind(this, rootView);
         castsPresenter.setView(this);
 
-        GridLayoutManager gm1 = new GridLayoutManager(getActivity(), 2);
-        cast_list.setLayoutManager(gm1);
+        cast_list.setLayoutManager( new LinearLayoutManager(getActivity()));
         castListAdapter = new CreditListAdapter<>(getContext(), castArrayList, imageLoader);
         cast_list.setAdapter(castListAdapter);
 
-
-        GridLayoutManager gm2 = new GridLayoutManager(getActivity(), 2);
-        crew_list.setLayoutManager(gm2);
+        crew_list.setLayoutManager( new LinearLayoutManager(getActivity()));
         crewListAdapter = new CreditListAdapter<>(getContext(), crewArrayList, imageLoader);
         crew_list.setAdapter(crewListAdapter);
 

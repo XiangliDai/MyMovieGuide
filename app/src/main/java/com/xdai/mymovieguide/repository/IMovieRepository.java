@@ -33,4 +33,6 @@ public interface IMovieRepository {
     Observable<Movies> getMovieRecommendationsById(int movie_id, int page);
 
     Observable<Movies> getMovieSimilarsById(int movie_id, int page);
+
+    Observable<Movies> getMoviesByGenre(int genre);
 }

@@ -12,6 +12,8 @@ import com.xdai.mymovieguide.ui.detail.tabs.casts.CastsPresenter;
 import com.xdai.mymovieguide.ui.detail.tabs.casts.ICastsPresenter;
 import com.xdai.mymovieguide.ui.detail.tabs.overview.IOverviewPresenter;
 import com.xdai.mymovieguide.ui.detail.tabs.overview.OverviewPresenter;
+import com.xdai.mymovieguide.ui.detail.tabs.reviews.IReviewsPresenter;
+import com.xdai.mymovieguide.ui.detail.tabs.reviews.ReviewsPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -62,4 +64,11 @@ public class MovieDetailActivityModule {
     ICastsPresenter providesCastPresenter(IMovieDetailRepository movieDetailRepository) {
         return new CastsPresenter(movieDetailRepository );
     }
+
+    @Provides
+    IReviewsPresenter providesReviewsPresenter(IMovieDetailRepository movieDetailRepository) {
+        return new ReviewsPresenter(movieDetailRepository );
+    }
+
+
 }

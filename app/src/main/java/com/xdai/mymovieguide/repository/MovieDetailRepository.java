@@ -7,6 +7,7 @@ import com.mymovieguide.xdai.network.config.IApiRetrofitProvider;
 import com.mymovieguide.xdai.network.response.Credits;
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.mymovieguide.xdai.network.response.Movies;
+import com.mymovieguide.xdai.network.response.Reviews;
 import com.mymovieguide.xdai.network.response.Videos;
 import com.xdai.mymovieguide.R;
 import com.xdai.mymovieguide.ui.detail.IMovieDetailPresenter;
@@ -58,6 +59,11 @@ public class MovieDetailRepository implements IMovieDetailRepository {
     @Override
     public Observable<Movies> getMovieSimilarsById(int movie_id, int page){
         return apiRestClient.getMovieSimilarsById(movie_id, page, language, apiKey);
+    }
+
+    @Override
+    public Observable<Reviews> getMovieReviewsById(int movie_id, int page) {
+        return apiRestClient.getMovieReviewsById(movie_id, page, language, apiKey);
     }
 
 }
