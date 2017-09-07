@@ -1,4 +1,4 @@
-package com.xdai.mymovieguide.ui.movie_trailers;
+package com.xdai.mymovieguide.ui.detail.tabs.trailers;
 
 import com.xdai.mymovieguide.mvp.BasePresenter;
 import com.xdai.mymovieguide.repository.IMovieDetailRepository;
@@ -10,26 +10,26 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiangli on 8/31/17.
  */
 
-public class VideosPresenter extends BasePresenter<IVideoView> implements IVideosPresenter {
-    IVideoView videoView;
+public class TrailersPresenter extends BasePresenter<ITrailerView> implements ITrailersPresenter {
+    ITrailerView videoView;
     IMovieDetailRepository movieDetailRepository;
     int page;
 
-    public VideosPresenter(IMovieDetailRepository movieDetailRepository) {
+    public TrailersPresenter(IMovieDetailRepository movieDetailRepository) {
         this.movieDetailRepository = movieDetailRepository;
         page = 1;
     }
 
     @Override
-    public void setView(IVideoView videoView) {
+    public void setView(ITrailerView videoView) {
         this.videoView = videoView;
     }
 
     @Override
-    public void getVideos(int movie_id) {
+    public void getTrailers(int movie_id) {
         if(movieDetailRepository != null && videoView != null)
             movieDetailRepository.getMovieVideosById(movie_id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(videos -> {
-                videoView.bindVideos(videos);
+                videoView.bindTrailers(videos);
             }, throwable -> {
                 if(videoView != null) {
                     videoView.hideProgress();
@@ -37,4 +37,5 @@ public class VideosPresenter extends BasePresenter<IVideoView> implements IVideo
                 }});
 
     }
+
 }

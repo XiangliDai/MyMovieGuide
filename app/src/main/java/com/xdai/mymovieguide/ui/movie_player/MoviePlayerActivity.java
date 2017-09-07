@@ -1,24 +1,12 @@
-package com.xdai.mymovieguide.ui.movie_trailers;
+package com.xdai.mymovieguide.ui.movie_player;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.mymovieguide.xdai.network.response.VideoResult;
-import com.mymovieguide.xdai.network.response.Videos;
 import com.xdai.mymovieguide.R;
-import com.xdai.mymovieguide.Utils.IImageLoader;
-
-import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,8 +16,6 @@ public class MoviePlayerActivity extends YouTubeBaseActivity {
 
     @Bind(R.id.youtube_player)
     YouTubePlayerView youtube_player;
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

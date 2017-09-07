@@ -4,6 +4,7 @@ package com.xdai.mymovieguide.ui.detail;
 import com.xdai.mymovieguide.ui.detail.tabs.casts.CastsFragment;
 import com.xdai.mymovieguide.ui.detail.tabs.overview.OverviewFragment;
 import com.xdai.mymovieguide.ui.detail.tabs.reviews.ReviewsFragment;
+import com.xdai.mymovieguide.ui.detail.tabs.trailers.TrailersFragment;
 
 import dagger.Component;
 
@@ -19,4 +20,5 @@ public interface MovieDetailActivityComponent {
 
     void inject(ReviewsFragment reviewsFragment);
 
+    void inject(TrailersFragment trailersFragment);
 }

@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.mymovieguide.xdai.network.response.Genre;
-import com.xdai.mymovieguide.ui.movie_trailers.MoviePlayerActivity;
-import com.xdai.mymovieguide.ui.movie_trailers.MovieTrailersActivity;
+import com.xdai.mymovieguide.ui.movie_player.MoviePlayerActivity;
 import com.xdai.mymovieguide.ui.movie_list.MovieListActivity;
 import com.xdai.mymovieguide.ui.detail.MovieDetailActivity;
 
@@ -30,12 +29,6 @@ public class NavigateService {
         context.startActivity(intent);
     }
 
-    public static void launchMovieTrailer(Context context, int movieId, String movieName) {
-        Intent intent = new Intent(context, MovieTrailersActivity.class);
-        intent.putExtra("movie_name", movieName);
-        intent.putExtra("movie_id", movieId);
-        context.startActivity(intent);
-    }
 
     public static void launchVideoPlayer(Context context, String id) {
         Intent intent = new Intent(context, MoviePlayerActivity.class);

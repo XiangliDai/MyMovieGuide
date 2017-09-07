@@ -54,7 +54,7 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
 
         initStateManager();
         toolbar.setVisibility(View.VISIBLE);
-        currentType = Type.POPULAR;
+
         if(getIntent().getExtras()!= null) {
             currentType = (Type) getIntent().getExtras().get("list_type");
         }
@@ -62,10 +62,13 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
             currentType = Type.values()[savedInstanceState.getInt("current_type")];
         }
 
+        if(currentType == null){
+            currentType = Type.POPULAR;
+        }
 
-        if(currentType == Type.GENRE){
+        if(currentType == Type.GENRE && getIntent().getExtras() != null){
             id = getIntent().getExtras().getInt("genre_id");
-            toolbar.setTitle( getIntent().getExtras().getString("genre_name"));
+            toolbar.setTitle(getIntent().getExtras().getString("genre_name"));
         }
 
         setSupportActionBar(toolbar);

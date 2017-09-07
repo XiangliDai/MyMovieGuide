@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -12,7 +13,9 @@
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground">
 
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
         <com.google.android.youtube.player.YouTubeThumbnailView
             android:id="@+id/youtube_thumbnail"
             android:layout_width="match_parent"
@@ -31,27 +34,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="center"
-                android:src="@mipmap/ic_play_circle_filled_white_white_18dp"
+                android:src="@mipmap/ic_play_circle_filled_white_white_48dp"
                 android:tint="@color/colorPrimary" />
 
         </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
         <TextView
             android:id="@+id/text_name"
             android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/text_size"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            tool:text="name" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_size"
             android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
+            android:textSize="16sp" /></LinearLayout>
+
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>

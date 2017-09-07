@@ -4,9 +4,6 @@
     <item
         android:id="@+id/action_share"
         android:icon="@mipmap/ic_share_white_18dp"
-        android:title="Share"/>
-    <item
-        android:id="@+id/action_trailer"
-        android:icon="@mipmap/ic_movie_white_18dp"
-        android:title="Trailers"/>
+        android:title="@string/share"/>
+
 </menu>

@@ -74,10 +74,10 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
         setTitle(movie_name);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        detail_tabs.addTab(detail_tabs.newTab().setText("Overview"));
-        detail_tabs.addTab(detail_tabs.newTab().setText("Casts"));
-        detail_tabs.addTab(detail_tabs.newTab().setText("Reviews"));
-
+        detail_tabs.addTab(detail_tabs.newTab().setText(R.string.overview));
+        detail_tabs.addTab(detail_tabs.newTab().setText(R.string.casts));
+        detail_tabs.addTab(detail_tabs.newTab().setText(R.string.reviews));
+        detail_tabs.addTab(detail_tabs.newTab().setText(R.string.trailers));
         viewpager.setAdapter(new DetailPagerAdapter(getSupportFragmentManager()));
         viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(detail_tabs));
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -145,8 +145,6 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
         switch (item.getItemId()) {
             case R.id.action_share:
                 break;
-            case R.id.action_trailer:
-                NavigateService.launchMovieTrailer(this, movie_id, movie_name);
             case android.R.id.home:
                 onBackPressed();
                 return true;
