@@ -8,6 +8,7 @@ import com.xdai.mymovieguide.mvp.IPresenter;
 
 public interface IMovieListPresenter extends IPresenter<IMovieListView> {
 
-    void loadMovieList(MovieListBaseActivity.Type type, int id);
-    void loadMovieList(MovieListBaseActivity.Type type);
+    void loadMovieList(MovieListBaseActivity.Type type, boolean clearPage, int id);
+
+    void loadMovieList(MovieListBaseActivity.Type type, boolean clearPage);
 }

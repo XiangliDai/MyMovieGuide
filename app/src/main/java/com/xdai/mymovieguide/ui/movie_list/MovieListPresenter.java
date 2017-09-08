@@ -20,6 +20,7 @@ public class MovieListPresenter extends BasePresenter<IMovieListView> implements
     private IMovieRepository movieRepository;
     private int page = 1;
     private int currentType;
+
     public MovieListPresenter(IMovieRepository movieRepository) {
         super();
         this.movieRepository = movieRepository;
@@ -38,8 +39,10 @@ public class MovieListPresenter extends BasePresenter<IMovieListView> implements
     }
 
     @Override
-    public void loadMovieList(MovieListBaseActivity.Type type, int id) {
-        switch (type){
+    public void loadMovieList(MovieListBaseActivity.Type type, boolean clearPage, int id) {
+        if(clearPage)
+            page = 1;
+        switch (type) {
             case POPULAR:
                 loadPopularMovies();
                 break;
@@ -59,8 +62,8 @@ public class MovieListPresenter extends BasePresenter<IMovieListView> implements
     }
 
     @Override
-    public void loadMovieList(MovieListBaseActivity.Type type) {
-        loadMovieList(type, 0);
+    public void loadMovieList(MovieListBaseActivity.Type type, boolean clearPage) {
+        loadMovieList(type, clearPage, 0);
     }
 
 
@@ -81,7 +84,7 @@ public class MovieListPresenter extends BasePresenter<IMovieListView> implements
     }
 
     private Consumer<Movies> onReceiveData = movieListResult -> {
-        this.page = movieListResult.getPage();
+        this.page++;
         Log.d(TAG, "page= " + page);
         getView().bindMovieList(movieListResult.getMovieResults());
     };

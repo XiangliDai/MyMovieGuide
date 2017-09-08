@@ -1,8 +1,12 @@
 package com.xdai.mymovieguide.ui.detail;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -13,9 +17,11 @@ import android.widget.ImageView;
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.xdai.mymovieguide.R;
 import com.xdai.mymovieguide.Utils.IImageLoader;
-import com.xdai.mymovieguide.Utils.NavigateService;
 import com.xdai.mymovieguide.ui.BaseActivity;
+import com.xdai.mymovieguide.ui.detail.share.ShareBottomSheetRecyclerAdapter;
 import com.xdai.mymovieguide.ui.detail.tabs.DetailPagerAdapter;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -37,7 +43,8 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     ViewPager viewpager;
     @Bind(R.id.detail_tabs)
     TabLayout detail_tabs;
-    private MovieDetailActivityComponent component;
+
+    MovieDetailActivityComponent component;
 
     public int getMovie_id() {
         return movie_id;
@@ -113,6 +120,7 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
 
             }
         });
+        movieDetailPresenter.getMovie(movie_id);
     }
 
 
@@ -120,7 +128,6 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     protected void initializeStore() {
         movieDetailPresenter.setView(this);
         getStateMaintainer().put(movieDetailPresenter.getClass().getCanonicalName(), movieDetailPresenter);
-        movieDetailPresenter.getMovie(movie_id);
 
     }
 
@@ -144,6 +151,7 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_share:
+                promptShareCampaignBottomSheet();
                 break;
             case android.R.id.home:
                 onBackPressed();
@@ -159,4 +167,29 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
         imageLoader.loadImageIntoImageView(this.getString(R.string.image_url) + movieDetail.getBackdrop_path(), backdrop);
 
     }
+
+    public AppCompatDialog promptShareCampaignBottomSheet() {
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(R.layout.layout_bottom_sheet);
+        RecyclerView share_recycler =(RecyclerView) bottomSheetDialog.findViewById(R.id.share_recycler);
+
+
+        share_recycler.setLayoutManager(new LinearLayoutManager(this));
+
+                        ShareBottomSheetRecyclerAdapter fundBottomSheetRecyclerAdapter = new ShareBottomSheetRecyclerAdapter(this);
+                        fundBottomSheetRecyclerAdapter.setItemClickListener(new ShareBottomSheetRecyclerAdapter.ItemClickListener() {
+                            @Override
+                            public void OnClicked() {
+                                bottomSheetDialog.dismiss();
+
+                                }
+                            });
+        share_recycler.setAdapter(fundBottomSheetRecyclerAdapter);
+                        bottomSheetDialog.show();
+
+
+        return bottomSheetDialog;
+    }
+
 }

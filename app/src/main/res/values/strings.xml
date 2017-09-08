@@ -5,6 +5,7 @@
     <string name="profile_image_url">https://image.tmdb.org/t/p/w132_and_h132_bestv2/</string>
     <string name="youtube_url">https://www.youtube.com/watch?v=</string>
     <string name="google_api_key">AIzaSyDO24n4LoSyi6zoI5LYQMd6mhqwc1ksYSM</string>
+    <string name="facebook_api_key">1513732685341063</string>
     <string name="text_popular">Popular</string>
     <string name="text_top_rated">Top rated</string>
     <string name="text_now_palying">Now playing</string>

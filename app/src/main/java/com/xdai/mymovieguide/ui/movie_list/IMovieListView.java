@@ -11,4 +11,5 @@ import java.util.ArrayList;
 
 public interface IMovieListView extends IView {
     void bindMovieList(ArrayList<MovieResult> movieResults);
+
 }

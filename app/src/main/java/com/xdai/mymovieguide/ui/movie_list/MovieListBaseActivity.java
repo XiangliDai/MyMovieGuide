@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.mymovieguide.xdai.network.response.MovieResult;
 import com.xdai.mymovieguide.R;
+import com.xdai.mymovieguide.Utils.EndlessRecyclerViewScrollListener;
 import com.xdai.mymovieguide.Utils.IImageLoader;
 import com.xdai.mymovieguide.ui.BaseActivity;
 
@@ -41,8 +42,9 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
 
     protected MovieListAdapter movieListAdapter;
     protected ArrayList<MovieResult> movieMovieResultList;
-    protected Type currentType = Type.GENRE;
+    protected Type currentType;
     private int id = 0;
+    private EndlessRecyclerViewScrollListener scrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +77,30 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         movie_list.setLayoutManager(linearLayoutManager);
+        if(currentType != Type.GENRE) {
+            // Retain an instance so that you can call `resetState()` for fresh searches
+            scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+                @Override
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                    // Triggered only when new data needs to be appended to the list
+                    // Add whatever code is needed to append new items to the bottom of the list
+                    movieListPresenter.loadMovieList(currentType, false, id);
+                }
+            };
+            // Adds the scroll listener to RecyclerView
+            movie_list.addOnScrollListener(scrollListener);
+        }
+
         movieMovieResultList = new ArrayList<>();
         movieListAdapter = new MovieListAdapter(this, movieMovieResultList, imageLoader);
         movie_list.setAdapter(movieListAdapter);
         swipe_refresh_layout.setOnRefreshListener(() -> {
             swipe_refresh_layout.setRefreshing(true);
             movieMovieResultList.clear();
-            movieListAdapter.reset();
-            movieListPresenter.loadMovieList(currentType, id);
+            //movieListAdapter.reset();
+            movieListPresenter.loadMovieList(currentType, true, id);
         });
-        movieListPresenter.loadMovieList(currentType, id);
+        movieListPresenter.loadMovieList(currentType, true, id);
     }
 
     protected abstract void setContentView();
@@ -99,7 +115,6 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
     protected void initializeStore() {
         movieListPresenter.setView(this);
         getStateMaintainer().put(movieListPresenter.getClass().getCanonicalName(), movieListPresenter);
-        movieListPresenter.loadMovieList(Type.POPULAR, 0);
     }
 
     @Override
@@ -107,7 +122,6 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
         movieListPresenter = getStateMaintainer().get(movieListPresenter.getClass().getCanonicalName());
         if (movieListPresenter != null) {
             movieListPresenter.setView(this);
-            movieListPresenter.loadMovieList(currentType);
         }
     }
 
@@ -123,7 +137,6 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
 
     @Override
     public void bindMovieList(ArrayList<MovieResult> movieResults) {
-        movieMovieResultList.clear();
         swipe_refresh_layout.setRefreshing(false);
         movieMovieResultList.addAll(movieResults);
         movieListAdapter.notifyDataSetChanged();

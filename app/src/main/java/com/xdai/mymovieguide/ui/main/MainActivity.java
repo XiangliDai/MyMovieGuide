@@ -19,8 +19,6 @@ public class MainActivity extends MovieListActivity {
     @Bind(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
-    private Type currentType = Type.POPULAR;
-
     private MainActivityComponent component() {
         if (component == null) {
             component = DaggerMainActivityComponent.builder()
@@ -43,6 +41,7 @@ public class MainActivity extends MovieListActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
+                    movieMovieResultList.clear();
                     switch (item.getItemId()) {
                         case R.id.action_popular:
                             currentType = Type.POPULAR;
@@ -57,7 +56,7 @@ public class MainActivity extends MovieListActivity {
                             currentType = Type.UPCOMING;
                             break;
                     }
-                    movieListPresenter.loadMovieList(currentType);
+                    movieListPresenter.loadMovieList(currentType, true);
                     return true;
                 });
         Log.d(TAG, "current type: " + currentType);

@@ -7,6 +7,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.xdai.mymovieguide.R;
+import com.xdai.mymovieguide.Utils.YoutubePlayerUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,58 +23,10 @@ public class MoviePlayerActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_player);
 
-
         ButterKnife.bind(this, this.findViewById(android.R.id.content));
         String video_key = getIntent().getStringExtra("video_key");
 
-        //toolbar.setTitle(movie_name);
-        //setSupportActionBar(toolbar);
-
-
-
-        youtube_player.initialize(getString(R.string.google_api_key), new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean wasRestored) {
-                if (!wasRestored) {
-
-                    youTubePlayer.cueVideo(video_key);
-                    youTubePlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
-                        @Override
-                        public void onPlaying() {
-
-                        }
-
-                        @Override
-                        public void onPaused() {
-
-                        }
-
-                        @Override
-                        public void onStopped() {
-
-                        }
-
-                        @Override
-                        public void onBuffering(boolean b) {
-
-                        }
-
-                        @Override
-                        public void onSeekTo(int i) {
-
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-            }
-        });
-
-
-
-
+        YoutubePlayerUtils.initializePlayer(this, youtube_player, video_key);
     }
 
 }
