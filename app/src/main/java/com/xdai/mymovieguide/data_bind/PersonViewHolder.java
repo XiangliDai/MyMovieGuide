@@ -1,5 +1,6 @@
 package com.xdai.mymovieguide.data_bind;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +22,7 @@ public class PersonViewHolder extends RecyclerView.ViewHolder {
     public TextView person_title;
     @Bind(R.id.person_profile)
     public ImageView person_profile;
-    @Bind(R.id.know_for_list)
+    @Nullable @Bind(R.id.know_for_list)
     public RecyclerView know_for_list;
 
     public PersonViewHolder(View itemView) {

@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  */
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
-    @Bind(R.id.image)
+    @Bind(R.id.image_movie_backdrop)
     public ImageView image;
     @Bind(R.id.movie_name)
     public TextView movie_name;

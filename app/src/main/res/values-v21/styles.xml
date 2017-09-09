@@ -16,7 +16,9 @@
 -->
 
 <resources>
-
+    <style name="AppTheme" parent="BaseTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
     <style name="DetailPageTheme" parent="BaseTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

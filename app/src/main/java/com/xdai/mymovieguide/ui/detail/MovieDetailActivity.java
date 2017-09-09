@@ -21,8 +21,6 @@ import com.xdai.mymovieguide.ui.BaseActivity;
 import com.xdai.mymovieguide.ui.detail.share.ShareBottomSheetRecyclerAdapter;
 import com.xdai.mymovieguide.ui.detail.tabs.DetailPagerAdapter;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import butterknife.Bind;
@@ -36,7 +34,7 @@ public class MovieDetailActivity extends BaseActivity<IMovieDetailPresenter> imp
     IImageLoader imageLoader;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.backdrop)
+    @Bind(R.id.image_movie_backdrop)
     ImageView backdrop;
 
     @Bind(R.id.viewpager)

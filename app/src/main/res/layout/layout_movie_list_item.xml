@@ -14,18 +14,20 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/image_movie_backdrop"
             android:layout_width="133dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:layout_marginRight="12dp"
-            android:src="@mipmap/sample" />
+            android:src="@mipmap/sample"
+            android:transitionName="movie_backdrop"
+            />
 
         <TextView
             android:id="@+id/movie_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image"
+            android:layout_toRightOf="@+id/image_movie_backdrop"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_toLeftOf="@+id/movie_rate"
@@ -48,7 +50,7 @@
             android:layout_below="@+id/movie_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image"
+            android:layout_toRightOf="@+id/image_movie_backdrop"
             android:textColor="@color/subtitle_grey"
             android:textSize="14sp"
             android:drawableLeft="@mipmap/ic_date_range_white_18dp"
@@ -60,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/movie_release"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/image"
+            android:layout_toRightOf="@+id/image_movie_backdrop"
             android:ellipsize="end"
             android:maxLines="4"
             android:lineSpacingExtra="2sp"
@@ -72,7 +74,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image"
+            android:layout_toRightOf="@+id/image_movie_backdrop"
             android:textColor="@color/colorPrimary"
             android:paddingTop="16dp"
             android:paddingRight="16dp"

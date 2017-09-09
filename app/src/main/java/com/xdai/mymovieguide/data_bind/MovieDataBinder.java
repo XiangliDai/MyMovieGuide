@@ -1,5 +1,6 @@
 package com.xdai.mymovieguide.data_bind;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
@@ -30,7 +31,7 @@ public class MovieDataBinder<M extends IMovie> {
         movieViewHolder.movie_release.setText(movieData.getRelease_date());
         movieViewHolder.movie_rate.setText(String.valueOf(movieData.getVote_average()));
         imageLoader.loadImageIntoImageView(context.getString(R.string.image_url) + movieData.getBackdrop_path(), movieViewHolder.image);
-        View.OnClickListener onClickListener = view -> NavigateService.launchMovieDetail(context, movieData.getId(), movieData.getTitle());
+        View.OnClickListener onClickListener = view -> NavigateService.launchMovieDetailWithTransition((Activity)context, movieData.getId(), movieData.getTitle(), movieViewHolder.image);
         movieViewHolder.more_info.setOnClickListener(onClickListener);
         movieViewHolder.itemView.setOnClickListener(onClickListener);
     }

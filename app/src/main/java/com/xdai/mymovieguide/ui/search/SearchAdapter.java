@@ -45,7 +45,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         } else if(viewType == PERSON){
             View itemView = LayoutInflater.
                     from(parent.getContext()).
-                    inflate(R.layout.layout_person_item, parent, false);
+                    inflate(R.layout.layout_person_with_know_for_list, parent, false);
             return new PersonViewHolder(itemView);
         }
         return null;
@@ -75,7 +75,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             PersonDataBinder<SearchResult> personDataBinder = new PersonDataBinder<>(context, searchResult, personViewHolder, imageLoader);
             personDataBinder.bind();
             if(searchResult.getKnown_for() != null){
-                personViewHolder.know_for_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
+                personViewHolder.know_for_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                 MovieListAdapter movieListAdapter = new MovieListAdapter(context, searchResult.getKnown_for(), imageLoader, R.layout.layout_small_movie_list_item );
                 personViewHolder.know_for_list.setAdapter(movieListAdapter);
             }
