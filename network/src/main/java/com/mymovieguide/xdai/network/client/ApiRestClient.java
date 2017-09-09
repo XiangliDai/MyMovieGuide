@@ -5,6 +5,8 @@ import com.mymovieguide.xdai.network.response.Genres;
 import com.mymovieguide.xdai.network.response.MovieDetail;
 import com.mymovieguide.xdai.network.response.Movies;
 import com.mymovieguide.xdai.network.response.Reviews;
+import com.mymovieguide.xdai.network.response.Search;
+import com.mymovieguide.xdai.network.response.SearchResult;
 import com.mymovieguide.xdai.network.response.Videos;
 
 import io.reactivex.Observable;
@@ -66,6 +68,9 @@ public interface ApiRestClient {
 
     @GET("movie/{movie_id}/reviews")
     Observable<Reviews> getMovieReviewsById(@Path("movie_id") int movie_id, @Query("page") int page, @Query("language") String language, @Query("api_key") String apiKey);
+
+    @GET("search/multi")
+    Observable<Search> getSearchResultsByQuery(@Query("query") String query, @Query("include_adult") boolean include_adult, @Query("page") int page, @Query("language") String language, @Query("region") String region, @Query("api_key") String apiKey);
 
     /*
     public static final String POSTER_PATH = "http://image.tmdb.org/t/p/w342";

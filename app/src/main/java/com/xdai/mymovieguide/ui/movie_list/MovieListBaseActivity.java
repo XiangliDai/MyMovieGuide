@@ -31,7 +31,7 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
     @Inject
     protected IImageLoader imageLoader;
 
-    @Bind(R.id.movie_list)
+    @Bind(R.id.recycler_list)
     protected RecyclerView movie_list;
 
     @Bind(R.id.swipe_refresh_layout)
@@ -55,7 +55,7 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
         ButterKnife.bind(this, this.findViewById(android.R.id.content));
 
         initStateManager();
-        toolbar.setVisibility(View.VISIBLE);
+
 
         if(getIntent().getExtras()!= null) {
             currentType = (Type) getIntent().getExtras().get("list_type");
@@ -73,8 +73,6 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
             toolbar.setTitle(getIntent().getExtras().getString("genre_name"));
         }
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         movie_list.setLayoutManager(linearLayoutManager);
         if(currentType != Type.GENRE) {
@@ -92,7 +90,7 @@ public abstract class MovieListBaseActivity extends BaseActivity<IMovieListPrese
         }
 
         movieMovieResultList = new ArrayList<>();
-        movieListAdapter = new MovieListAdapter(this, movieMovieResultList, imageLoader);
+        movieListAdapter = new MovieListAdapter<>(this, movieMovieResultList, imageLoader, R.layout.layout_movie_list_item);
         movie_list.setAdapter(movieListAdapter);
         swipe_refresh_layout.setOnRefreshListener(() -> {
             swipe_refresh_layout.setRefreshing(true);

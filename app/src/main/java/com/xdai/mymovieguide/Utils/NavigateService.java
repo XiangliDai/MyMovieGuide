@@ -7,6 +7,7 @@ import com.mymovieguide.xdai.network.response.Genre;
 import com.xdai.mymovieguide.ui.movie_player.MoviePlayerActivity;
 import com.xdai.mymovieguide.ui.movie_list.MovieListActivity;
 import com.xdai.mymovieguide.ui.detail.MovieDetailActivity;
+import com.xdai.mymovieguide.ui.search.SearchActivity;
 
 /**
  * Created by xiangli on 8/30/17.
@@ -33,6 +34,12 @@ public class NavigateService {
     public static void launchVideoPlayer(Context context, String id) {
         Intent intent = new Intent(context, MoviePlayerActivity.class);
         intent.putExtra("video_key", id);
+        context.startActivity(intent);
+    }
+
+    public static void launchSearchActivity(Context context, String query) {
+        Intent intent = new Intent(context, SearchActivity.class);
+        intent.putExtra("query", query);
         context.startActivity(intent);
     }
 }

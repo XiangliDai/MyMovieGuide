@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by xiangli on 8/29/17.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MovieDetail {
+public class MovieDetail implements IMovie{
     String poster_path;
     boolean adult;
     String overview;

@@ -1,5 +1,6 @@
 package com.xdai.mymovieguide.ui.movie_list;
 
+import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.xdai.mymovieguide.R;
@@ -20,17 +21,15 @@ public class MovieListActivity extends MovieListBaseActivity {
     }
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_movie_list);
+        setContentView(R.layout.activity_with_recycler_view);
         component().inject(this);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

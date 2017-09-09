@@ -5,7 +5,6 @@ package com.mymovieguide.xdai.network.response;
  */
 
 public interface IPerson {
-    int getGender();
     int getId();
     String getName();
     String getProfile_path();

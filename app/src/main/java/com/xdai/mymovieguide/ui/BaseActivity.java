@@ -2,6 +2,7 @@ package com.xdai.mymovieguide.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.xdai.mymovieguide.Utils.StateMaintainer;
@@ -53,5 +54,15 @@ public abstract class BaseActivity<P extends IPresenter>  extends AppCompatActiv
     @Override
     public void hideProgress() {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

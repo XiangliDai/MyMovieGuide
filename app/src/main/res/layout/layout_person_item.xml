@@ -1,51 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:orientation="vertical">
+    android:layout_margin="4dp"
+    android:background="@drawable/card_background"
+    android:elevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/person_profile"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@mipmap/blankprofile"
-        app:civ_border_width="1dp"
-        app:civ_border_color="@color/loading_avatar_color"
-        android:layout_marginRight="8dp"
-        />
-
-    <TextView
-        android:id="@+id/person_name"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="6dp"
-        android:layout_toLeftOf="@+id/movie_rate"
-        android:layout_toRightOf="@+id/person_profile"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        tools:text="Sandra Bullock" />
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/person_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/person_name"
-        android:layout_toRightOf="@+id/person_profile"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        tools:text="Scarlet Overkill (voice)" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/person_profile"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginRight="8dp"
+            android:src="@mipmap/empty_profile"
+            app:civ_border_color="@color/loading_avatar_color"
+            app:civ_border_width="1dp" />
 
-    <TextView
-        android:id="@+id/link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/person_title"
-        android:layout_toRightOf="@+id/person_profile"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:visibility="gone"
-        tools:text="Scarlet Overkill (voice)" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@+id/movie_rate"
+            android:layout_toRightOf="@+id/person_profile"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="Sandra Bullock" />
+
+        <TextView
+            android:id="@+id/person_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/person_name"
+            android:layout_toRightOf="@+id/person_profile"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="Scarlet Overkill (voice)" />
+
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/person_title"
+            android:layout_toRightOf="@+id/person_profile"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:text="Scarlet Overkill (voice)" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/know_for_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

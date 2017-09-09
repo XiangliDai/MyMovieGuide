@@ -5,17 +5,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 
 /**
- * Created by xiangli on 8/25/17.
+ * Created by xiangli on 9/8/17.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MovieResult implements IMovie {
+public class SearchResult implements ISearch, IPerson, IMovie{
     String poster_path;
     boolean adult;
     String overview;
     String release_date;
+    String original_title;
     ArrayList<Integer> genre_ids;
     int id;
-    String original_title;
+    String media_type;
     String original_language;
     String title;
     String backdrop_path;
@@ -23,7 +24,14 @@ public class MovieResult implements IMovie {
     int vote_count;
     boolean video;
     float vote_average;
+    String first_air_date;
+    ArrayList<String> origin_country;
+    String original_name;
+    String profile_path;
+    ArrayList<SearchResult> known_for;
 
+
+    String name;
     public String getPoster_path() {
         return poster_path;
     }
@@ -56,6 +64,14 @@ public class MovieResult implements IMovie {
         this.release_date = release_date;
     }
 
+    public String getOriginal_title() {
+        return original_title;
+    }
+
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
+    }
+
     public ArrayList<Integer> getGenre_ids() {
         return genre_ids;
     }
@@ -72,12 +88,12 @@ public class MovieResult implements IMovie {
         this.id = id;
     }
 
-    public String getOriginal_title() {
-        return original_title;
+    public String getMedia_type() {
+        return media_type;
     }
 
-    public void setOriginal_title(String original_title) {
-        this.original_title = original_title;
+    public void setMedia_type(String media_type) {
+        this.media_type = media_type;
     }
 
     public String getOriginal_language() {
@@ -136,6 +152,51 @@ public class MovieResult implements IMovie {
         this.vote_average = vote_average;
     }
 
+    public String getFirst_air_date() {
+        return first_air_date;
+    }
 
+    public void setFirst_air_date(String first_air_date) {
+        this.first_air_date = first_air_date;
+    }
 
+    public ArrayList<String> getOrigin_country() {
+        return origin_country;
+    }
+
+    public void setOrigin_country(ArrayList<String> origin_country) {
+        this.origin_country = origin_country;
+    }
+
+    public String getOriginal_name() {
+        return original_name;
+    }
+
+    public void setOriginal_name(String original_name) {
+        this.original_name = original_name;
+    }
+
+    public String getProfile_path() {
+        return profile_path;
+    }
+
+    public void setProfile_path(String profile_path) {
+        this.profile_path = profile_path;
+    }
+
+    public ArrayList<SearchResult> getKnown_for() {
+        return known_for;
+    }
+
+    public void setKnown_for(ArrayList<SearchResult> known_for) {
+        this.known_for = known_for;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
